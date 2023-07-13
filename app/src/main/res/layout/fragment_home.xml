@@ -69,37 +69,49 @@
             app:layout_constraintStart_toStartOf="@id/text_genres"
             app:layout_constraintTop_toBottomOf="@id/text_genres" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_info"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/inter_bold"
+            android:text="@string/more_info"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/more_info" />
+            app:strokeColor="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_characters"
-            android:layout_width="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="125dp"
             android:layout_height="0dp"
             android:fontFamily="@font/inter_bold"
+            android:text="@string/characters"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/button_quotes"
             app:layout_constraintStart_toEndOf="@id/button_info"
-            android:text="@string/characters" />
+            app:strokeColor="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_quotes"
-            android:layout_width="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="110dp"
             android:layout_height="0dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/inter_bold"
+            android:text="@string/quotes"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/quotes" />
+            app:strokeColor="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
