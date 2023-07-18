@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.rafael.bankai.R
 import com.rafael.bankai.databinding.FragmentHomeBinding
@@ -16,7 +16,7 @@ import com.rafael.bankai.databinding.FragmentHomeBinding
  */
 class HomeFragment : Fragment(), OnClickListener {
 
-    private val viewModel: OverviewViewModel by viewModels()
+    private val viewModel: OverviewViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
