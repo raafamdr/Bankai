@@ -7,8 +7,11 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val ANIME_ID = 269
-private const val JIKAN_BASE_URL =
-    "https://api.jikan.moe/v4/anime/${ANIME_ID}/"
+private const val JIKAN_BASE_URL = "https://api.jikan.moe/v4/anime/${ANIME_ID}/"
+
+private const val ANIME_TITLE = "bleach"
+private const val ANIME_CHAN_BASE_URL =
+    "https://animechan.xyz/api/quotes/anime?title=bleach/"
 
 /**
  * Build the Moshi object with Kotlin adapter factory that Retrofit will be using to parse JSON
@@ -16,14 +19,16 @@ private const val JIKAN_BASE_URL =
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 /**
- * Build a Retrofit object with the Moshi converter
- * */
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(JIKAN_BASE_URL)
-    .build()
+ * Build a Retrofit object with the Moshi converter for a given base URL
+ */
+private fun createRetrofit(baseUrl: String): Retrofit {
+    return Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(baseUrl)
+        .build()
+}
 
-interface BankaiApiService {
+interface JikanApiService {
     @GET("full")
     suspend fun getInformation(): BleachData
 
@@ -31,9 +36,19 @@ interface BankaiApiService {
     suspend fun getCharacters(): CharactersData
 }
 
+interface AnimeChanApiService {
+
+}
+
 /**
- * A public Api object that exposes the lazy-initialized Retrofit service
+ * A public Api object that exposes the lazy-initialized Retrofit services
  */
-object BankaiApi {
-    val retrofitService: BankaiApiService by lazy { retrofit.create(BankaiApiService::class.java) }
+object ApiService {
+    // Create Retrofit service for the first API
+    private val retrofitJikan = createRetrofit(JIKAN_BASE_URL)
+    val jikanApiService: JikanApiService by lazy { retrofitJikan.create(JikanApiService::class.java) }
+
+    // Create Retrofit service for the second API
+//    private val retrofitAnother = createRetrofit(ANIME_CHAN_BASE_URL)
+//    val anotherApiService: AnimeChanApiService by lazy { retrofitAnother.create(AnimeChanApiService::class.java) }
 }

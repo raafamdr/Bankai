@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rafael.bankai.network.BankaiApi
-import com.rafael.bankai.network.BleachData
-import com.rafael.bankai.network.CharactersData
-import com.rafael.bankai.network.Genres
+import com.rafael.bankai.network.*
 import kotlinx.coroutines.launch
 
 enum class BankaiApiStatus { LOADING, ERROR, DONE }
@@ -30,8 +27,8 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = BankaiApiStatus.LOADING
             try {
-                _information.value = BankaiApi.retrofitService.getInformation()
-                _characters.value = BankaiApi.retrofitService.getCharacters()
+                _information.value = ApiService.jikanApiService.getInformation()
+                _characters.value = ApiService.jikanApiService.getCharacters()
                 _status.value = BankaiApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = BankaiApiStatus.ERROR
