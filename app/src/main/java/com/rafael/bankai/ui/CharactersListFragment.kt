@@ -24,6 +24,8 @@ class CharactersListFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        binding.recyclerView.adapter = CharacterListAdapter()
+
         // Inflate the layout for this fragment
         return binding.root
     }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.rafael.bankai.network.BankaiApi
 import com.rafael.bankai.network.BleachData
 import com.rafael.bankai.network.CharactersData
+import com.rafael.bankai.network.Genres
 import kotlinx.coroutines.launch
 
 enum class BankaiApiStatus { LOADING, ERROR, DONE }

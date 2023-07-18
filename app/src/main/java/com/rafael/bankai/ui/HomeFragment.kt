@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.rafael.bankai.R
 import com.rafael.bankai.databinding.FragmentHomeBinding
@@ -15,22 +16,23 @@ import com.rafael.bankai.databinding.FragmentHomeBinding
  */
 class HomeFragment : Fragment(), OnClickListener {
 
-    // private val viewModel: AmphibianViewModel by activityViewModels()
+    private val viewModel: OverviewViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
-        // TODO set viewModel
-        // binding.viewModel = viewModel
+
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+
+        binding.viewModel = viewModel
 
         // Eventos
         binding.buttonInfo.setOnClickListener(this)
         binding.buttonCharacters.setOnClickListener(this)
         binding.buttonQuotes.setOnClickListener(this)
-
-        // return inflater.inflate(R.layout.fragment_home, container, false)
 
         // Inflate the layout for this fragment
         return binding.root
