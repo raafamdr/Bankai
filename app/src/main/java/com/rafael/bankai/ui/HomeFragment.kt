@@ -29,7 +29,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         binding.viewModel = viewModel
 
-        // Eventos
+        // Events
         binding.buttonInfo.setOnClickListener(this)
         binding.buttonCharacters.setOnClickListener(this)
         binding.buttonQuotes.setOnClickListener(this)
