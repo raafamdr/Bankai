@@ -8,7 +8,6 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.rafael.bankai.network.CharactersData
 import com.rafael.bankai.ui.BankaiApiStatus
 import com.rafael.bankai.ui.CharacterListAdapter
 

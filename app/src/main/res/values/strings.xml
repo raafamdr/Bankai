@@ -16,6 +16,5 @@
     <string name="producers">Producers</string>
     <string name="licensors">Licensors</string>
     <string name="source">Source</string>
-    <string name="main_information">"%1$s - %2$s | %3$s | %4$s"</string>
     <string name="quotation_mark">\"</string>
 </resources>

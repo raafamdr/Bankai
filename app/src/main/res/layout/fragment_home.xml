@@ -102,7 +102,7 @@
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/series_details"
                 android:textAllCaps="true"
-                android:textColor="#FCA03D"
+                android:textColor="@color/orange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_synopsis" />
