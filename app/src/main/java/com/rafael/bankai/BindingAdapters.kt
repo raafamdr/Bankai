@@ -2,6 +2,8 @@ package com.rafael.bankai
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +26,13 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
+@BindingAdapter("starRating")
+fun bindRating(ratingBar: RatingBar, rating: Float) {
+    // Convert the rating from '10' scale to '5' scale
+    val rating5 = rating / 2.0f
+    ratingBar.rating = rating5
+}
+
 @BindingAdapter("bankaiApiStatus")
 fun bindStatus(statusImageView: ImageView, status: BankaiApiStatus) {
     when (status) {
@@ -37,6 +46,21 @@ fun bindStatus(statusImageView: ImageView, status: BankaiApiStatus) {
         }
         BankaiApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("textStatus")
+fun bindQuote(statusTextView: TextView, status: BankaiApiStatus) {
+    when (status) {
+        BankaiApiStatus.LOADING -> {
+            statusTextView.visibility = View.INVISIBLE
+        }
+        BankaiApiStatus.ERROR -> {
+            statusTextView.visibility = View.INVISIBLE
+        }
+        BankaiApiStatus.DONE -> {
+            statusTextView.visibility = View.VISIBLE
         }
     }
 }

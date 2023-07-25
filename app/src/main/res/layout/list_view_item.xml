@@ -21,14 +21,15 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/character_image"
                     android:layout_width="120dp"
                     android:layout_height="150dp"
@@ -36,6 +37,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
                     app:imageUrl="@{character.character.images.jpg.image_url}"
+                    app:shapeAppearanceOverlay="@style/DefaultImage"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <LinearLayout
@@ -50,14 +52,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:fontFamily="@font/inter_medium"
                         android:text="@{character.character.name}"
                         android:textColor="@color/black"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
                         tools:text="Character Name" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-
 </layout>

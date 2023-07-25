@@ -1,11 +1,10 @@
 package com.rafael.bankai.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.OnClickListener
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.rafael.bankai.R
@@ -17,7 +16,6 @@ import com.rafael.bankai.databinding.FragmentHomeBinding
 class HomeFragment : Fragment(), OnClickListener {
 
     private val viewModel: OverviewViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,9 +28,9 @@ class HomeFragment : Fragment(), OnClickListener {
         binding.viewModel = viewModel
 
         // Events
-        binding.buttonInfo.setOnClickListener(this)
-        binding.buttonCharacters.setOnClickListener(this)
-        binding.buttonQuotes.setOnClickListener(this)
+        binding.textDetails.setOnClickListener(this)
+        binding.textCharacters.setOnClickListener(this)
+        binding.textQuotes.setOnClickListener(this)
 
         // Inflate the layout for this fragment
         return binding.root
@@ -40,13 +38,13 @@ class HomeFragment : Fragment(), OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
-            R.id.button_info -> {
+            R.id.text_details -> {
                 findNavController().navigate(R.id.action_homeFragment_to_infoFragment)
             }
-            R.id.button_characters -> {
+            R.id.text_characters -> {
                 findNavController().navigate(R.id.action_homeFragment_to_charactersListFragment)
             }
-            R.id.button_quotes -> {
+            R.id.text_quotes -> {
                 findNavController().navigate(R.id.action_homeFragment_to_quotesFragment)
             }
         }

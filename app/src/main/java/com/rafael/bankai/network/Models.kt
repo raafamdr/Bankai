@@ -17,6 +17,7 @@ data class BleachInfo(
     val aired: Aired,
     val duration: String,
     val rating: String,
+    val score: Float,
     val year: Int,
     val producers: List<Producers>,
     val licensors: List<Licensors>,
@@ -99,4 +100,13 @@ data class CharacterImages(
 
 data class ImageUrl(
     val image_url: String
+)
+
+/**
+ * Quote JSON Model
+ */
+data class Quote(
+    val anime: String,
+    val character: String,
+    val quote: String
 )

@@ -10,8 +10,7 @@ private const val ANIME_ID = 269
 private const val JIKAN_BASE_URL = "https://api.jikan.moe/v4/anime/${ANIME_ID}/"
 
 private const val ANIME_TITLE = "bleach"
-private const val ANIME_CHAN_BASE_URL =
-    "https://animechan.xyz/api/quotes/anime?title=bleach/"
+private const val ANIME_CHAN_BASE_URL = "https://animechan.xyz/api/random/anime/"
 
 /**
  * Build the Moshi object with Kotlin adapter factory that Retrofit will be using to parse JSON
@@ -37,7 +36,8 @@ interface JikanApiService {
 }
 
 interface AnimeChanApiService {
-
+    @GET("?title=${ANIME_TITLE}")
+    suspend fun getQuote(): Quote
 }
 
 /**
@@ -49,6 +49,6 @@ object ApiService {
     val jikanApiService: JikanApiService by lazy { retrofitJikan.create(JikanApiService::class.java) }
 
     // Create Retrofit service for the second API
-//    private val retrofitAnother = createRetrofit(ANIME_CHAN_BASE_URL)
-//    val anotherApiService: AnimeChanApiService by lazy { retrofitAnother.create(AnimeChanApiService::class.java) }
+    private val retrofitAnimeChan = createRetrofit(ANIME_CHAN_BASE_URL)
+    val animeChanApiService: AnimeChanApiService by lazy { retrofitAnimeChan.create(AnimeChanApiService::class.java) }
 }

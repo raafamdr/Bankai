@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.rafael.bankai.R
 import com.rafael.bankai.databinding.FragmentCharactersListBinding
 
 class CharactersListFragment : Fragment() {

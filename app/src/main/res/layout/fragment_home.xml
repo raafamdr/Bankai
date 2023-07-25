@@ -17,16 +17,16 @@
         <ImageView
             android:id="@+id/img_background"
             android:layout_width="wrap_content"
-            android:layout_height="640dp"
+            android:layout_height="590dp"
             android:scaleType="fitXY"
-            android:src="@drawable/bleach"
+            android:src="@drawable/bleach_poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="290dp"
+            android:layout_height="330dp"
             android:background="@drawable/view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
                 android:id="@+id/img_logo"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/bleach_logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,83 +47,91 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter_black"
                 android:text="@{viewModel.information.data.title}"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_logo"
                 tools:text="Bleach" />
 
-            <TextView
-                android:id="@+id/text_genres"
+            <RatingBar
+                android:id="@+id/star_rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:text="@{@string/main_information(viewModel.information.data.aired.prop.from.year, viewModel.information.data.aired.prop.to.year, 2.0, 5.0)}"
-                android:textColor="@color/white"
+                android:stepSize="0.5"
+                android:theme="@style/RatingBar"
                 app:layout_constraintStart_toStartOf="@id/text_title"
                 app:layout_constraintTop_toBottomOf="@id/text_title"
-                tools:text="2004 - 2012 | Action, Adventure, Fantasy | 5.0" />
+                app:starRating="@{viewModel.information.data.score}"
+                tools:rating="4.7" />
+
+            <TextView
+                android:id="@+id/text_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@{@string/average(Float.toString(viewModel.information.data.score))}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/star_rating"
+                app:layout_constraintStart_toEndOf="@id/star_rating"
+                app:layout_constraintTop_toTopOf="@id/star_rating"
+                tools:text="Average: 4.7" />
 
             <TextView
                 android:id="@+id/text_synopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/inter_medium"
-                android:text="High school student Ichigo Kurosaki, who has the ability to see ghosts, gains soul reaper powers from Rukia Kuchiki and sets out to save the world from 'Hollows'."
+                android:text="@string/synopsis"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@id/text_genres"
-                app:layout_constraintTop_toBottomOf="@id/text_genres" />
+                app:layout_constraintStart_toStartOf="@id/star_rating"
+                app:layout_constraintTop_toBottomOf="@id/star_rating" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_info"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="110dp"
+            <TextView
+                android:id="@+id/text_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/series_details"
+                android:textAllCaps="true"
+                android:textColor="#FCA03D"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_synopsis" />
+
+            <TextView
+                android:id="@+id/text_characters"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="@string/more_info"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:cornerRadius="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:strokeColor="@color/white" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_characters"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="125dp"
-                android:layout_height="0dp"
-                android:fontFamily="@font/inter_bold"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/characters"
-                android:textAllCaps="false"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
-                app:cornerRadius="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/button_quotes"
-                app:layout_constraintStart_toEndOf="@id/button_info"
-                app:strokeColor="@color/white" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_details" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_quotes"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="110dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/inter_bold"
+            <TextView
+                android:id="@+id/text_quotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/quotes"
-                android:textAllCaps="false"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
-                app:cornerRadius="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:strokeColor="@color/white" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_characters" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

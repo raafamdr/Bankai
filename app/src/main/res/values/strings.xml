@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">Bankai</string>
-    <string name="more_info">More info</string>
+    <string name="details">Details</string>
     <string name="characters">Characters</string>
     <string name="quotes">Quotes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="average">Average: %s</string>
+    <string name="synopsis">High school student Ichigo Kurosaki, who has the ability to see ghosts, gains soul reaper powers from Rukia Kuchiki and sets out to save the world from \"Hollows\".</string>
+    <string name="series_details">Series details</string>
+    <string name="more_info">More info</string>
+    <string name="duration">Duration</string>
+    <string name="episodes">%s episodes</string>
+    <string name="episode_length">Episode length</string>
+    <string name="genres">Genres</string>
+    <string name="rating">Rating</string>
+    <string name="aired">Aired</string>
+    <string name="producers">Producers</string>
+    <string name="licensors">Licensors</string>
+    <string name="source">Source</string>
     <string name="main_information">"%1$s - %2$s | %3$s | %4$s"</string>
+    <string name="quotation_mark">\"</string>
 </resources>

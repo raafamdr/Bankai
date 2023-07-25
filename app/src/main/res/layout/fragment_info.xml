@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,14 +10,236 @@
             type="com.rafael.bankai.ui.OverviewViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.InfoFragment">
+        android:background="@color/black">
 
         <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_black"
+            android:text="@{viewModel.information.data.title}"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bleach" />
+
+        <TextView
+            android:id="@id/text_synopsis"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@{viewModel.information.data.title}" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/synopsis"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_title"
+            tools:text="@string/synopsis" />
+
+        <TextView
+            android:id="@+id/text_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/duration"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_synopsis" />
+
+        <TextView
+            android:id="@+id/text_episodes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{@string/episodes(Integer.toString(viewModel.information.data.episodes))}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_duration"
+            tools:text="366 episodes" />
+
+        <TextView
+            android:id="@+id/text_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/episode_length"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_episodes"
+            app:layout_constraintTop_toBottomOf="@id/text_episodes" />
+
+        <TextView
+            android:id="@+id/text_episode_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.information.data.duration}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_length"
+            app:layout_constraintTop_toBottomOf="@id/text_length"
+            tools:text="24 min per ep" />
+
+        <TextView
+            android:id="@+id/text_genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/genres"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_episode_length"
+            app:layout_constraintTop_toBottomOf="@id/text_episode_length" />
+
+        <TextView
+            android:id="@+id/text_list_genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.genreNames}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_genres"
+            app:layout_constraintTop_toBottomOf="@id/text_genres"
+            tools:text="Action, Adventure, Fantasy" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/rating"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_list_genres"
+            app:layout_constraintTop_toBottomOf="@id/text_list_genres" />
+
+        <TextView
+            android:id="@+id/text_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.information.data.rating}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/rating"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            tools:text="PG-13 - Teens 13 or older" />
+
+        <TextView
+            android:id="@+id/aired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/aired"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_rating"
+            app:layout_constraintTop_toBottomOf="@id/text_rating" />
+
+        <TextView
+            android:id="@+id/text_aired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.information.data.aired.string}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/aired"
+            app:layout_constraintTop_toBottomOf="@id/aired"
+            tools:text="Oct 5, 2004 to Mar 27, 2012" />
+
+        <TextView
+            android:id="@+id/producers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/producers"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/text_aired"
+            app:layout_constraintTop_toBottomOf="@id/text_aired" />
+
+        <TextView
+            android:id="@+id/text_producers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.getFirstProducerName}"
+            android:textAllCaps="true"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/producers"
+            app:layout_constraintTop_toBottomOf="@id/producers"
+            tools:text="TV TOKYO" />
+
+        <TextView
+            android:id="@+id/licensors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/licensors"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/producers"
+            app:layout_constraintTop_toBottomOf="@id/text_aired" />
+
+        <TextView
+            android:id="@+id/text_licensors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.getFirstLicensorName}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/licensors"
+            app:layout_constraintTop_toBottomOf="@id/licensors"
+            tools:text="VIZ Media" />
+
+        <TextView
+            android:id="@+id/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/source"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/licensors"
+            app:layout_constraintTop_toBottomOf="@id/text_aired" />
+
+        <TextView
+            android:id="@+id/text_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="@{viewModel.information.data.source}"
+            android:textColor="#D8D5D9"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/source"
+            app:layout_constraintTop_toBottomOf="@id/source"
+            tools:text="Manga" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
