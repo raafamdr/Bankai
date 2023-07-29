@@ -3,8 +3,6 @@ package com.rafael.bankai.ui
 import android.os.Bundle
 import android.view.*
 import android.view.View.OnClickListener
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController

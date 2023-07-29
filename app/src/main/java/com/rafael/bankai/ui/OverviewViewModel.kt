@@ -13,6 +13,9 @@ class OverviewViewModel : ViewModel() {
     private val _status = MutableLiveData<BankaiApiStatus>()
     val status: LiveData<BankaiApiStatus> = _status
 
+    private val _charactersStatus = MutableLiveData<BankaiApiStatus>()
+    val characterStatus: LiveData<BankaiApiStatus> = _charactersStatus
+
     private val _quoteStatus = MutableLiveData<BankaiApiStatus>()
     val quoteStatus: LiveData<BankaiApiStatus> = _quoteStatus
 
@@ -27,32 +30,37 @@ class OverviewViewModel : ViewModel() {
 
     init {
         getInfo()
+        getCharacters()
         getQuote()
     }
 
-    // Function to get concatenated genre names
+    /**
+     * Function to get concatenated genre names
+     */
     fun getGenreNames(): String {
         val genres = information.value?.data?.genres
         return genres?.joinToString(", ") { it.name } ?: ""
     }
 
-    // Function to get the name of the first producer
+    /**
+     * Function to get the name of the first producer
+     */
     fun getFirstProducerName(): String {
         val producers = information.value?.data?.producers
         return producers?.firstOrNull()?.name ?: ""
     }
 
-    // Function to get the name of the first licensor
+    /**
+     * Function to get the name of the first licensor
+     */
     fun getFirstLicensorName(): String {
         val licensors = information.value?.data?.licensors
         return licensors?.firstOrNull()?.name ?: ""
     }
 
-    fun getAllCharacters(): List<Character> {
-        return characters.value!!.data
-    }
-
-    // Function to search characters given a query
+    /**
+     * Function to search characters given a query
+     */
     fun searchCharacters(query: String): List<Character> {
         val allCharacters = characters.value!!.data
         val filteredCharacters = allCharacters.filter { character ->
@@ -66,7 +74,6 @@ class OverviewViewModel : ViewModel() {
             _status.value = BankaiApiStatus.LOADING
             try {
                 _information.value = ApiService.jikanApiService.getInformation()
-                _characters.value = ApiService.jikanApiService.getCharacters()
                 _status.value = BankaiApiStatus.DONE
             } catch (e: Exception) {
                 _status.value = BankaiApiStatus.ERROR
@@ -76,11 +83,12 @@ class OverviewViewModel : ViewModel() {
 
     private fun getCharacters() {
         viewModelScope.launch {
-            _status.value = BankaiApiStatus.LOADING
+            _charactersStatus.value = BankaiApiStatus.LOADING
             try {
                 _characters.value = ApiService.jikanApiService.getCharacters()
+                _charactersStatus.value = BankaiApiStatus.DONE
             } catch (e: Exception) {
-                _status.value = BankaiApiStatus.ERROR
+                _charactersStatus.value = BankaiApiStatus.ERROR
             }
         }
     }

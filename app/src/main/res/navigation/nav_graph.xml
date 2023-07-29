@@ -29,16 +29,7 @@
         android:id="@+id/charactersListFragment"
         android:name="com.rafael.bankai.ui.CharactersListFragment"
         android:label="@string/characters"
-        tools:layout="@layout/fragment_characters_list">
-        <action
-            android:id="@+id/action_charactersListFragment_to_characterDetailFragment"
-            app:destination="@id/characterDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/characterDetailFragment"
-        android:name="com.rafael.bankai.ui.CharacterDetailFragment"
-        android:label="fragment_character_detail"
-        tools:layout="@layout/fragment_character_detail" />
+        tools:layout="@layout/fragment_characters_list"/>
     <fragment
         android:id="@+id/quotesFragment"
         android:name="com.rafael.bankai.ui.QuotesFragment"

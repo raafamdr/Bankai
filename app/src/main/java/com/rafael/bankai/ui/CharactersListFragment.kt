@@ -79,7 +79,7 @@ class CharactersListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun filterList(query: String?) {
         filteredList = if (query.isNullOrEmpty()) {
-            viewModel.getAllCharacters()
+            viewModel.characters.value!!.data
         } else {
             viewModel.searchCharacters(query)
         }

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.rafael.bankai.databinding.FragmentQuotesBinding
 
-
 class QuotesFragment : Fragment() {
 
     private val viewModel: OverviewViewModel by viewModels()
