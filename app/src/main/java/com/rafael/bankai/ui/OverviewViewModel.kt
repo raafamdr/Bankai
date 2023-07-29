@@ -48,6 +48,19 @@ class OverviewViewModel : ViewModel() {
         return licensors?.firstOrNull()?.name ?: ""
     }
 
+    fun getAllCharacters(): List<Character> {
+        return characters.value!!.data
+    }
+
+    // Function to search characters given a query
+    fun searchCharacters(query: String): List<Character> {
+        val allCharacters = characters.value!!.data
+        val filteredCharacters = allCharacters.filter { character ->
+            character.character.name.contains(query, ignoreCase = true)
+        }
+        return filteredCharacters
+    }
+
     private fun getInfo() {
         viewModelScope.launch {
             _status.value = BankaiApiStatus.LOADING

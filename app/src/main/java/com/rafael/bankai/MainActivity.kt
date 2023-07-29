@@ -1,10 +1,10 @@
 package com.rafael.bankai
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -35,20 +35,18 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.homeFragment -> {
-                    supportActionBar?.hide()
+                    supportActionBar?.setDisplayShowTitleEnabled(false)
                 }
                 R.id.infoFragment -> {
-                    supportActionBar?.show()
                     supportActionBar?.setDisplayShowTitleEnabled(false)
                     supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
 
                 }
                 R.id.charactersListFragment -> {
-                    supportActionBar?.show()
                     supportActionBar?.setDisplayShowTitleEnabled(true)
                 }
                 R.id.quotesFragment -> {
-                    supportActionBar?.hide()
+                    supportActionBar?.setDisplayShowTitleEnabled(true)
                 }
             }
         }

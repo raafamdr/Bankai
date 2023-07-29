@@ -16,5 +16,7 @@
     <string name="producers">Producers</string>
     <string name="licensors">Licensors</string>
     <string name="source">Source</string>
+    <string name="search">Search</string>
     <string name="quotation_mark">\"</string>
+    <string name="no_data_found">No data found</string>
 </resources>
