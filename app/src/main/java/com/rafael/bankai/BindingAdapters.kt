@@ -49,17 +49,17 @@ fun bindStatus(statusImageView: ImageView, status: BankaiApiStatus) {
     }
 }
 
-@BindingAdapter("textStatus")
-fun bindQuote(statusTextView: TextView, status: BankaiApiStatus) {
+@BindingAdapter("viewStatus")
+fun bindLayout(view: View, status: BankaiApiStatus) {
     when (status) {
         BankaiApiStatus.LOADING -> {
-            statusTextView.visibility = View.INVISIBLE
+            view.visibility = View.INVISIBLE
         }
         BankaiApiStatus.ERROR -> {
-            statusTextView.visibility = View.INVISIBLE
+            view.visibility = View.INVISIBLE
         }
         BankaiApiStatus.DONE -> {
-            statusTextView.visibility = View.VISIBLE
+            view.visibility = View.VISIBLE
         }
     }
 }

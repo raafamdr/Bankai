@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val splashScreen = installSplashScreen()
         val viewModel = ViewModelProvider(this)[OverviewViewModel::class.java]
         splashScreen.setKeepOnScreenCondition {
-            viewModel.status.value != BankaiApiStatus.DONE
+            viewModel.status.value == BankaiApiStatus.LOADING
         }
 
         super.onCreate(savedInstanceState)

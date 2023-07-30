@@ -23,9 +23,9 @@
             android:text="@string/quotation_mark"
             android:textColor="@color/white"
             android:textSize="60sp"
-            app:textStatus="@{viewModel.quoteStatus}"
             app:layout_constraintBottom_toTopOf="@id/text_quote"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:viewStatus="@{viewModel.quoteStatus}" />
 
         <TextView
             android:id="@+id/text_quote"
@@ -62,6 +62,7 @@
             android:id="@+id/status_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
             app:bankaiApiStatus="@{viewModel.quoteStatus}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
